@@ -3,27 +3,39 @@ import "./index.css";
 import App from "./App.jsx";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { NavBar } from "./components/NavBar.jsx";
-import { InputWindow } from "./components/InputWindow.jsx";
-import { ShowDetail } from "./components/ShowDetail.jsx";
+import { NavBar } from "../components/NavBar.jsx";
+
+import { Counter } from "../components/Counter.jsx";
+import { LenDenHisab } from "../components/LenDenHisab.jsx";
+import { NameInput } from "../components/NameInput.jsx";
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
+  { path: "/", element: <NavBar /> },
   {
-    path: "/inputWindow",
+    path: "/nameInput",
     element: (
       <div>
         <NavBar />
-        <InputWindow />
+        <NameInput />
+      </div>
+    ),
+  },
+
+  {
+    path: "/counter",
+    element: (
+      <div>
+        <NavBar />
+        <Counter />
       </div>
     ),
   },
   {
-    path: "/showDetail",
+    path: "/lenDenHisab",
     element: (
       <div>
         <NavBar />
-        <ShowDetail />
+        <LenDenHisab />
       </div>
     ),
   },
