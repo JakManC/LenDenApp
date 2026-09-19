@@ -8,6 +8,7 @@ import { NavBar } from "../components/NavBar.jsx";
 import { Counter } from "../components/Counter.jsx";
 import { LenDenHisab } from "../components/LenDenHisab.jsx";
 import { NameInput } from "../components/NameInput.jsx";
+import { Details } from "../components/Details.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <NavBar /> },
@@ -36,6 +37,16 @@ const router = createBrowserRouter([
       <div>
         <NavBar />
         <LenDenHisab />
+      </div>
+    ),
+  },
+
+  {
+    path: "/details",
+    element: (
+      <div>
+        <NavBar />
+        <Details />
       </div>
     ),
   },

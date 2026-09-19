@@ -1,17 +1,22 @@
 import { useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import useUserStore from "../store/userStore";
+import useLenDenStore from "../store/lenDenStore";
 
 export const LenDenHisab = () => {
   const name = useUserStore((state) => state.name);
 
-  const [lena, setLena] = useState(0);
-  const [dena, setDena] = useState(0);
+  const navigate = useNavigate();
+
+  const lena = useLenDenStore((state) => state.lena);
+  const dena = useLenDenStore((state) => state.dena);
+  const entries = useLenDenStore((state) => state.entries);
+  const addLena = useLenDenStore((state) => state.addLena);
+
+  const addDena = useLenDenStore((state) => state.addDena);
 
   const [amount, setAmount] = useState("");
   const [reason, setReason] = useState("");
-
-  const [entries, setEntries] = useState([]);
 
   const handleLena = () => {
     if (!amount || Number(amount) <= 0) {
@@ -22,16 +27,7 @@ export const LenDenHisab = () => {
       return;
     }
 
-    const newEntry = {
-      id: crypto.randomUUID(),
-      type: "lena",
-      amount: Number(amount),
-      reason: reason,
-    };
-
-    setLena((prevLena) => prevLena + Number(amount));
-
-    setEntries((prevEntries) => [...prevEntries, newEntry]);
+    addLena(amount, reason);
 
     setAmount("");
     setReason("");
@@ -46,16 +42,7 @@ export const LenDenHisab = () => {
       return;
     }
 
-    const newEntry = {
-      id: crypto.randomUUID(),
-      type: "dena",
-      amount: Number(amount),
-      reason: reason,
-    };
-
-    setDena((prevDena) => prevDena + Number(amount));
-
-    setEntries((prevEntries) => [...prevEntries, newEntry]);
+    addDena(amount, reason);
 
     setAmount("");
     setReason("");
@@ -152,7 +139,7 @@ export const LenDenHisab = () => {
         </div>
 
         {/* Entries */}
-        <div className="mt-8 grid grid-cols-2 gap-4">
+        <div className="mt-8 grid grid-cols-3 gap-4">
           {/* Lena Entries - 50% */}
           <div className="rounded-2xl bg-green-50 p-4 shadow-lg">
             <h2 className="mb-4 text-center text-xl font-bold text-green-700">
@@ -206,6 +193,17 @@ export const LenDenHisab = () => {
                   </div>
                 ))
               )}
+            </div>
+          </div>
+
+          <div className="rounded-2xl bg-yellow-50 p-4 shadow-lg">
+            <div className="flex flex-col gap-3">
+              <button
+                className="bg-green-700 text-white text-center p-2 m-2 rounded-full"
+                onClick={() => navigate("/details")}
+              >
+                {name}'s Details
+              </button>
             </div>
           </div>
         </div>

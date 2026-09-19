@@ -42,6 +42,13 @@ const useUserStore = create((set) => {
         };
       });
     },
+
+    resetUser: () => {
+      set({
+        name: "",
+        count: 0,
+      });
+    },
   };
 });
 export default useUserStore;

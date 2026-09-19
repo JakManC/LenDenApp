@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router";
 import useUserStore from "../store/userStore";
 import { ResultCounter } from "./ResultCounter";
 
 export const Counter = () => {
+  const navigate = useNavigate();
   const name = useUserStore((state) => state.name);
 
   const increBy1 = useUserStore((state) => state.increBy1);
@@ -60,6 +62,15 @@ export const Counter = () => {
 
         <div className="rounded-xl bg-slate-100 p-4 text-center">
           <ResultCounter />
+        </div>
+
+        <div className="rounded-xl bg-slate-100 p-4 text-center">
+          <button
+            className="bg-green-700 text-white text-center p-2 m-2 rounded-full"
+            onClick={() => navigate("/details")}
+          >
+            {name}'s ShowDetails
+          </button>
         </div>
       </div>
     </div>
