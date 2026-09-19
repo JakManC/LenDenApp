@@ -33,6 +33,13 @@ export const NameInput = () => {
           className="border-2 border-black p-2 m-2 rounded-full"
           {...register("name", { required: true })}
         />
+
+        <button
+          className="bg-green-700 text-center text-white p-2 m-2 rounded-full"
+          type="submit"
+        >
+          Register
+        </button>
       </form>
     </>
   );

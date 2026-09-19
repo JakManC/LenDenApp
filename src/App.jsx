@@ -1,3 +1,4 @@
+import { FetchFromBackEnd } from "../components/FetchFromBackEnd";
 import { NavBar } from "../components/NavBar";
 
 const App = () => {

@@ -9,9 +9,18 @@ import { Counter } from "../components/Counter.jsx";
 import { LenDenHisab } from "../components/LenDenHisab.jsx";
 import { NameInput } from "../components/NameInput.jsx";
 import { Details } from "../components/Details.jsx";
+import { FetchFromBackEnd } from "../components/FetchFromBackEnd.jsx";
 
 const router = createBrowserRouter([
-  { path: "/", element: <NavBar /> },
+  {
+    path: "/",
+    element: (
+      <div>
+        <NavBar />
+        <FetchFromBackEnd />
+      </div>
+    ),
+  },
   {
     path: "/nameInput",
     element: (
