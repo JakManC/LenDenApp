@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export const FetchFromBackEnd = () => {
   const [users, setUsers] = useState([]);
-  const API = " https://lendenbackend-9b7x.onrender.com/lenDen/getAll";
+  const API = "https://lendenbackend-9b7x.onrender.com/lenDen/getAll";
 
   const getAllUsersFromBackEnd = async () => {
     try {
