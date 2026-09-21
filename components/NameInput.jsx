@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router";
 import useUserStore from "../store/userStore";
+import axios from "axios";
 
 export const NameInput = () => {
   const { register, handleSubmit } = useForm();
@@ -12,9 +13,19 @@ export const NameInput = () => {
 
   const setName = useUserStore((state) => state.setName);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const api = " https://lendenbackend-9b7x.onrender.com/lenDen/registerUser";
+
     setName(data.name);
-    console.log(data.name);
+    try {
+      const response = await axios.post(api, data);
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+    axios.post(api, data.name);
+    console.log(data);
 
     if (from === "counter") {
       navigate("/counter", { state: { name: data.name } });
